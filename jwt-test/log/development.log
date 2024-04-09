@@ -1,0 +1,1556 @@
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE DATABASE `jwt_test_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE DATABASE `jwt_test_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.2ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('4149607227359677440', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (4.0ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2024-03-20 02:17:03.492989', '2024-03-20 02:17:03.492994')[0m
+Migrating to CreatePosts (20240320021623)
+  [1m[35m (30.0ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `content` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240320021623')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('4149607227359677440')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-19 23:23:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 53ms (Views: 2.9ms | ActiveRecord: 1.3ms | Allocations: 13118)
+
+
+Started POST "/api/v1/posts" for 127.0.0.1 at 2024-03-19 23:24:09 -0300
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"Mi primer post", "content"=>"Publicando mi primer post", "post"=>{"title"=>"Mi primer post", "content"=>"Publicando mi primer post"}}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (3.1ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `created_at`, `updated_at`) VALUES ('Mi primer post', 'Publicando mi primer post', '2024-03-20 02:24:09.134923', '2024-03-20 02:24:09.134923')[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+Completed 201 Created in 56ms (Views: 0.4ms | ActiveRecord: 20.6ms | Allocations: 11068)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-19 23:24:12 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 748)
+
+
+Started POST "/api/v1/posts" for 127.0.0.1 at 2024-03-19 23:24:19 -0300
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"Mi segundo post", "content"=>"Publicando mi segundo post", "post"=>{"title"=>"Mi segundo post", "content"=>"Publicando mi segundo post"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (3.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `content`, `created_at`, `updated_at`) VALUES ('Mi segundo post', 'Publicando mi segundo post', '2024-03-20 02:24:19.633485', '2024-03-20 02:24:19.633485')[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+Completed 201 Created in 13ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 1631)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-19 23:24:21 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.3ms | Allocations: 735)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('4149607227359677440', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to CreateUsers (20240320022844)
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` varchar(255), `password` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (9.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240320022844')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4149607227359677440')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('4149607227359677440', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AgregarIsAdminAUsuario (20240320023214)
+  [1m[35m (4.5ms)[0m  [1m[35mALTER TABLE `usuarios` ADD `isAdmin` tinyint(1)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4149607227359677440')[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('4149607227359677440', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to AgregarIsAdminAUsuario (20240320023214)
+  [1m[35m (28.7ms)[0m  [1m[35mALTER TABLE `users` ADD `isAdmin` tinyint(1)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240320023214')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('4149607227359677440')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('4149607227359677440', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+Migrating to CreateUsers (20240320023504)
+  [1m[35m (22.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` varchar(255), `password` varchar(255), `isAdmin` tinyint(1), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (13.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240320023504')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4149607227359677440')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:42:58 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (7.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "user"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+Completed 400 Bad Request in 8ms (ActiveRecord: 3.2ms | Allocations: 2368)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  
+app/controllers/api/v1/users_controller.rb:43:in `user_params'
+app/controllers/api/v1/users_controller.rb:5:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:43:15 -0300
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "user"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 2.1ms | Allocations: 176)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: users):
+  
+app/controllers/api/v1/users_controller.rb:43:in `user_params'
+app/controllers/api/v1/users_controller.rb:5:in `create'
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:43:34 -0300
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "user"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO `users` (`username`, `password`, `isAdmin`, `created_at`, `updated_at`) VALUES ('gerardo', 'gerardo0908', NULL, '2024-03-20 02:43:34.908340', '2024-03-20 02:43:34.908340')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+Completed 201 Created in 36ms (Views: 0.4ms | ActiveRecord: 13.3ms | Allocations: 11384)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:44:43 -0300
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "user"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO `users` (`username`, `password`, `isAdmin`, `created_at`, `updated_at`) VALUES ('test', 'test0908', NULL, '2024-03-20 02:44:43.495769', '2024-03-20 02:44:43.495769')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 8.8ms | Allocations: 1649)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:45:13 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 15ms (Views: 3.7ms | ActiveRecord: 0.7ms | Allocations: 2802)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2024-03-19 23:45:17 -0300
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `set_user'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1572)
+
+
+Started GET "/api/v1/users/2" for 127.0.0.1 at 2024-03-19 23:45:20 -0300
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `set_user'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 522)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2024-03-19 23:45:23 -0300
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `set_user'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 519)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:45:26 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 729)
+
+
+Started POST "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:47:06 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/users"):
+  
+Started POST "/api/v1/auth/register" for 127.0.0.1 at 2024-03-19 23:47:24 -0300
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"test2", "password"=>"[FILTERED]", "user"=>{"username"=>"test2", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO `users` (`username`, `password`, `isAdmin`, `created_at`, `updated_at`) VALUES ('test2', 'test0908', NULL, '2024-03-20 02:47:24.399376', '2024-03-20 02:47:24.399376')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:6:in `create'
+Completed 201 Created in 23ms (Views: 0.4ms | ActiveRecord: 11.5ms | Allocations: 4247)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:47:29 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 872)
+
+
+Started DELETE "/api/v1/users/3" for 127.0.0.1 at 2024-03-19 23:47:46 -0300
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `set_user'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM `users` WHERE `users`.`id` = 3[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `destroy'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 4.2ms | Allocations: 1973)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:47:49 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 729)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:47:52 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms | Allocations: 729)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:47:56 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 729)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-19 23:48:06 -0300
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+  ↳ app/controllers/api/v1/users_controller.rb:15:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 729)
+
+
+Started GET "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:55:24 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth/login"):
+  
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:55:27 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "session"=>{"username"=>"gerardo"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 4002)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:55:30 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo2", "session"=>{"username"=>"gerardo2"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo2' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 470)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:55:34 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "session"=>{"username"=>"gerardo"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 510)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:57:11 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "session"=>{"username"=>"gerardo"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 401 Unauthorized in 27ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 4114)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:57:19 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 483)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-19 23:57:23 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:3:in `login'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 534)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:29:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+NameError (uninitialized constant ApplicationController::JwtHandler):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:32:02 -0300
+  
+NameError (uninitialized constant ApplicationController::JwtHandler):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:34:11 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 5.2ms | Allocations: 19070)
+
+
+  
+NameError (undefined local variable or method `exp' for an instance of Api::V1::SessionsController):
+  
+app/controllers/concerns/jwt_handler.rb:10:in `jwt_encode'
+app/controllers/api/v1/sessions_controller.rb:8:in `login'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:34:32 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms | Allocations: 531)
+
+
+  
+NameError (undefined local variable or method `exp' for an instance of Api::V1::SessionsController):
+  
+app/controllers/concerns/jwt_handler.rb:10:in `jwt_encode'
+app/controllers/api/v1/sessions_controller.rb:8:in `login'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:35:21 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms | Allocations: 528)
+
+
+  
+NameError (undefined local variable or method `exp' for an instance of Api::V1::SessionsController):
+  
+app/controllers/concerns/jwt_handler.rb:10:in `jwt_encode'
+app/controllers/api/v1/sessions_controller.rb:8:in `login'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:37:36 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.9ms | Allocations: 4349)
+
+
+  
+NameError (undefined local variable or method `token' for an instance of Api::V1::SessionsController):
+  
+app/controllers/api/v1/sessions_controller.rb:9:in `login'
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:38:06 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 4301)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:38:08 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 522)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 15:50:48 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 4044)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2024-03-20 16:04:42 -0300
+Processing by Api::V1::UsersController#index as */*
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 185)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:04:45 -0300
+Processing by Api::V1::PostsController#index as */*
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 146)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:20 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 264)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 16:05:23 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 4047)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:28 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 10.4ms | ActiveRecord: 3.8ms | Allocations: 6108)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:35 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.5ms | Allocations: 1220)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:36 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:36 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.5ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:37 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:05:38 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:09:35 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:09:58 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 29ms (Views: 6.9ms | ActiveRecord: 8.0ms | Allocations: 7633)
+
+
+Started GET "/api/v1/auth/refresh" for 127.0.0.1 at 2024-03-20 16:10:31 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth/refresh"):
+  
+Started GET "/api/v1/auth/refresh" for 127.0.0.1 at 2024-03-20 16:10:45 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth/refresh"):
+  
+Started GET "/api/v1/auth/refresh" for 127.0.0.1 at 2024-03-20 16:11:02 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth/refresh"):
+  
+Started GET "/api/v1/auth/refresh" for 127.0.0.1 at 2024-03-20 16:11:03 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth/refresh"):
+  
+Started POST "/api/v1/auth/refresh" for 127.0.0.1 at 2024-03-20 16:11:10 -0300
+Processing by Api::V1::SessionsController#refresh as */*
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:21:in `refresh'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 4328)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:17 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 13ms (Views: 4.8ms | ActiveRecord: 4.0ms | Allocations: 4119)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:18 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 1219)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:19 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.6ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:30 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:30 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:31 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:32 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:32 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:33 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:33 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:35 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:35 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:36 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:38 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:39 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:39 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:40 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 155)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-20 16:11:41 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 149)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:13:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (61.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"sdsd", "password"=>"[FILTERED]", "session"=>{"username"=>"sdsd", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'sdsd' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 401 Unauthorized in 82ms (Views: 0.3ms | ActiveRecord: 44.4ms | Allocations: 10379)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:14:13 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 401 Unauthorized in 39ms (Views: 0.2ms | ActiveRecord: 15.9ms | Allocations: 10067)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:14:52 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 777)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:15:45 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"", "password"=>"[FILTERED]", "session"=>{"username"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = '' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 401 Unauthorized in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 485)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:15:50 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 401 Unauthorized in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 486)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:15:59 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:18:53 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:20:31 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 35ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 576)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:27:57 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 5.9ms | Allocations: 4072)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:28:04 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:28:09 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 32ms (Views: 9.5ms | ActiveRecord: 15.7ms | Allocations: 6277)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:29:09 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 183)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:29:27 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 149)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:29:48 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 149)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-20 21:30:06 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 566)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:08 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:12 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.7ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:13 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:14 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:15 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:17 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:18 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:21 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:26 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.7ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:28 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 1218)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:31 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:32 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:34 -0300
+Processing by Api::V1::PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 1217)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:30:36 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 149)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:31:35 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 149)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-20 21:31:48 -0300
+Processing by Api::V1::PostsController#index as */*
+JWT decode error: Not enough or too many segments
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 118)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 13:40:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (10.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 79ms (Views: 0.2ms | ActiveRecord: 24.8ms | Allocations: 19385)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 13:56:45 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.8ms | Allocations: 4060)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:56:47 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (2.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 22ms (Views: 9.9ms | ActiveRecord: 7.5ms | Allocations: 6285)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 13:57:34 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 578)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:57:36 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1216)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:57:37 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.8ms | Allocations: 1226)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:57:41 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1215)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:57:45 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 182)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:57:50 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 13:58:14 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 565)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:58:15 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.7ms | Allocations: 1214)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 13:58:30 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:58:31 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.5ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:58:39 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 13:58:40 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 14:41:25 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 656)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:27 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:38 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 148)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-21 14:41:38 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:21:in `refresh'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 634)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:38 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.8ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:40 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:41 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:42 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.7ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:54 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-21 14:41:54 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:21:in `refresh'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 630)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:54 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 2.5ms | ActiveRecord: 1.1ms | Allocations: 1215)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:55 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:41:56 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:16 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Not enough or too many segments
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-21 14:42:16 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"session"=>{}}
+JWT decode error: Nil JSON web token
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 95)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 14:42:23 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 564)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:26 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1215)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:30 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:31 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 1215)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:32 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:32 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.8ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:33 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-21 14:42:33 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:21:in `refresh'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 630)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:42:33 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.9ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-21 14:45:45 -0300
+Processing by Api::V1::PostsController#index as HTML
+  Parameters: {"post"=>{}}
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 88)
+
+
+Started GET "/api/v1/posts" for 127.0.0.1 at 2024-03-21 14:45:53 -0300
+Processing by Api::V1::PostsController#index as HTML
+  Parameters: {"post"=>{}}
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 87)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-21 14:47:18 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 565)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:47:20 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:47:27 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms | Allocations: 1214)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:47:29 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 147)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-21 14:47:29 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:21:in `refresh'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 630)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-21 14:47:29 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 1.6ms | ActiveRecord: 8.2ms | Allocations: 1214)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:20:41 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (9.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 84ms (Views: 0.3ms | ActiveRecord: 7.9ms | Allocations: 19385)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-25 14:20:50 -0300
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:24:in `find_user_from_token'
+  [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:4:in `index'
+Completed 200 OK in 18ms (Views: 9.5ms | ActiveRecord: 5.0ms | Allocations: 6284)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:23:44 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 578)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:26:16 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:26:41 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 575)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:29:42 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 576)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:31:06 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 4256)
+
+
+Started GET "/api/v1/posts" for ::1 at 2024-03-25 14:33:21 -0300
+Processing by Api::V1::PostsController#index as HTML
+JWT decode error: Signature has expired
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 238)
+
+
+Started POST "/api/v1/auth/refresh" for ::1 at 2024-03-25 14:33:21 -0300
+Processing by Api::V1::SessionsController#refresh as HTML
+  Parameters: {"refresh_token"=>"[FILTERED]", "session"=>{"refresh_token"=>"[FILTERED]"}}
+JWT decode error: Signature has expired
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:35:40 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:37:51 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 565)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:39:02 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:39:31 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:41:55 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:45:25 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 21ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:46:02 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 565)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:46:35 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:47:08 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:48:11 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:49:49 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:51:29 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:53:52 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:54:59 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:55:15 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 14:56:07 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:01:25 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 565)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:03:34 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:05:08 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:05:32 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 564)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:16:28 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 667)
+
+
+Started POST "/api/v1/auth/login" for 127.0.0.1 at 2024-03-25 15:16:43 -0300
+Processing by Api::V1::SessionsController#login as */*
+  Parameters: {"username"=>"gerardo", "password"=>"[FILTERED]", "session"=>{"username"=>"gerardo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'gerardo' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:5:in `login'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 564)
+
+
