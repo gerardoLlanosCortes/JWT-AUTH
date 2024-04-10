@@ -1,22 +1,13 @@
 "use client";
 
-import axios from "@/libs/hooks/axios";
 import useAxiosAuth from "@/libs/hooks/useAxiosAuth";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 
 export default function ObtenerPosts() {
-  const { data: session, status } = useSession();
   const [posts, setPosts] = useState([]);
   const axiosAuth = useAxiosAuth();
 
   const obtener = async () => {
-    // const res = await fetch("http://localhost:3001/api/v1/posts", {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: `bearer ${session?.user?.access_token}`,
-    //   },
-    // });
     try {
       const res = await axiosAuth.get("/posts");
       console.log(res);

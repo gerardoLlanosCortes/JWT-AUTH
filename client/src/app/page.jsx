@@ -1,8 +1,4 @@
 import ObtenerPosts from "@/components/ObtenerPosts";
-import { axiosAuth } from "@/libs/hooks/axios";
-import useAxiosAuth from "@/libs/hooks/useAxiosAuth";
-import Image from "next/image";
-import Link from "next/link";
 
 export default async function Home() {
   return (

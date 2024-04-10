@@ -1,11 +1,9 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function ButtonAuth() {
   const { data: session, status } = useSession();
-  const router = useRouter();
 
   if (status === "loading") {
     return <p>Loading...</p>;
@@ -15,7 +13,7 @@ export default function ButtonAuth() {
 
   if (!session) {
     // Redirige al usuario a la página de inicio de sesión
-    signIn(); // Esto iniciará el proceso de inicio de sesión proporcionado por NextAuth.js
+    signIn();
     return null; // Devuelve null mientras se inicia sesión
   }
 
